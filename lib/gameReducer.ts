@@ -129,7 +129,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 
     case "CLEAR_FLASH":
       if (!state.run) return state;
-      return { ...state, run: { ...state.run, flashNodeId: null, flashKind: null, levelJustCompleted: false } };
+      return { ...state, run: { ...state.run, flashNodeId: null, flashKind: null } };
 
     case "TICK": {
       if (!state.run || state.screen !== "playing") return state;
@@ -205,8 +205,14 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 
         if (levelComplete) {
           const timeBonus = Math.round(r.timeRemainingMs / 10) + newCombo * 15;
+        
           return {
             ...state,
+            // The player successfully completed one level
+            stats: {
+              ...state.stats,
+              levelsCompleted: state.stats.levelsCompleted + 1,
+            },
             run: {
               ...r,
               levelData: { ...r.levelData, nodes: updatedNodes },
