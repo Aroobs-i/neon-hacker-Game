@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-grid-size: 42px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: #05060a;
+  color: #e8f6ff;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(0, 240, 255, 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.35);
+  border-radius: 8px;
+}
+
+.bg-grid {
+  background-image: linear-gradient(rgba(0, 240, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.06) 1px, transparent 1px);
+  background-size: var(--bg-grid-size) var(--bg-grid-size);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 4px rgba(0, 240, 255, 0.9), 0 0 18px rgba(0, 240, 255, 0.55), 0 0 36px rgba(0, 240, 255, 0.3);
+}
+.text-glow-magenta {
+  text-shadow: 0 0 4px rgba(255, 46, 154, 0.9), 0 0 18px rgba(255, 46, 154, 0.55), 0 0 36px rgba(255, 46, 154, 0.3);
+}
+
+.glass-panel {
+  background: linear-gradient(160deg, rgba(20, 26, 46, 0.72), rgba(9, 12, 22, 0.78));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(0, 240, 255, 0.18);
+}
+
+.animated-gradient {
+  background: linear-gradient(120deg, #05060a, #0e1220, #1a0e2e, #0a1a2e, #05060a);
+  background-size: 300% 300%;
+  animation: gradient-shift 14s ease infinite;
+}
+
+.focus-neon:focus-visible {
+  outline: 2px solid #00f0ff;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
